@@ -1,13 +1,14 @@
 import React from 'react'
-import { FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native'
 import { style } from '../../../themes'
 import Avatar from '../../Atoms/Avatar/indext'
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import { IComponents } from '../../../types/IComponents';
 
-const CardProfile = () => {
+const CardProfile = ({ onPress }: IComponents.ICARDPROFILE) => {
     return (
         <ScrollView style={styles.container}>
-            <TouchableOpacity style={styles.card} activeOpacity={0.7}>
+            <TouchableOpacity style={styles.card} activeOpacity={0.7} onPress={onPress}>
                 <View style={styles.right}>
                     <Avatar />
                 </View>
@@ -32,8 +33,8 @@ const styles = StyleSheet.create({
     },
     card: {
         flexDirection: 'row',
-        marginHorizontal: style.sizes.margin.m_4,
-        marginBottom: style.sizes.margin.m_4,
+        marginHorizontal: style.sizes.margin.m_16,
+        marginBottom: style.sizes.margin.m_16,
         paddingBottom: style.sizes.padding.p_8,
         borderBottomWidth: 1,
         borderBottomColor: style.colors.grey.bgLight,
@@ -47,8 +48,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginLeft: style.sizes.margin.m_4,
-        marginRight: style.sizes.margin.m_2,
+        marginLeft: style.sizes.margin.m_16,
+        marginRight: style.sizes.margin.m_8,
     },
     info: {
         flexDirection: 'column',

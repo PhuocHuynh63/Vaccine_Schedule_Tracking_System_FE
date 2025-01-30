@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
         borderColor: style.colors.grey.line,
         borderRadius: style.sizes.borderRadius.br_3,
         height: 50,
-        marginHorizontal: style.sizes.margin.m_4,
-        marginVertical: style.sizes.margin.m_4,
+        marginHorizontal: style.sizes.margin.m_16,
+        marginVertical: style.sizes.margin.m_16,
     },
     input: {
         height: 50,
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         fontSize: style.fonts.size.large,
     },
     icon_search: {
-        marginHorizontal: style.sizes.margin.m_2,
+        marginHorizontal: style.sizes.margin.m_8,
         color: style.colors.grey.bg,
         fontSize: style.fonts.size.superLarge,
     }
