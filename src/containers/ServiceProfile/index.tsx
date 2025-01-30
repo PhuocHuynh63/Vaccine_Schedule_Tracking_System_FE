@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { Button } from '../../components/Button'
-import Search from '../../components/Search'
+import { Button } from '../../components/Atoms/Button'
+import { Search } from '../../components/Atoms/Search'
+
 
 const ServiceProfile = () => {
     return (
         <View style={styles.container}>
-            <Search></Search>
+            <Search placeholder='Find a vaccinator' />
             <Button>Add service profile</Button>
         </View>
     )
