@@ -6,6 +6,7 @@ export const colors = {
         bg: '#FFFFFF',
     },
     grey: {
+        bg: '#616161',
         line: '#B5B5B5'
     },
 }
