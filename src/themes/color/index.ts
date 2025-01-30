@@ -10,5 +10,6 @@ export const colors = {
         bgLight: '#DDDBE3',
         bgDark: '#999999',
         line: '#B5B5B5',
+        text: '#505050',
     },
 }
