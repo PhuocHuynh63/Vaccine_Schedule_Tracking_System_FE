@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
 import Feather from '@expo/vector-icons/Feather';
-import { style } from '../../themes';
+import { style } from '../../../themes';
 
 const Search = () => {
     return (
@@ -17,7 +17,7 @@ export default Search
 
 const styles = StyleSheet.create({
     container: {
-        
+
     },
     input: {
         height: 50,
