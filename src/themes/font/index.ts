@@ -13,5 +13,6 @@ export const fonts = {
         xlarge: 18,
         extraLarge: 20,
         superLarge: 24,
+        superXLarge: 26,
     },
 };
