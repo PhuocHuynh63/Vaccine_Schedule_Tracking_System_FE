@@ -1,14 +1,14 @@
 import { StyleSheet } from 'react-native'
 import React from 'react'
-import HomeScreen from '../../screens/Home'
 import { createStackNavigator } from '@react-navigation/stack';
+import ServiceProfileScreen from '../../screens/ServiceProfile';
 
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="Booking" component={ServiceProfileScreen} />
         </Stack.Navigator>
     )
 }
