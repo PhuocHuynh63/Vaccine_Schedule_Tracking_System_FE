@@ -7,6 +7,9 @@ export const colors = {
     },
     grey: {
         bg: '#616161',
-        line: '#B5B5B5'
+        bgLight: '#DDDBE3',
+        bgDark: '#999999',
+        line: '#B5B5B5',
+        text: '#505050',
     },
 }

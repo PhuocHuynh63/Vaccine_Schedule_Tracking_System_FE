@@ -2,11 +2,15 @@ import React from 'react'
 import { StyleSheet, Text, View, ViewProps } from 'react-native'
 import { style } from '../../../../themes';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { IComponents } from '../../../../types/IComponents';
+import { useNavigation } from '@react-navigation/core';
 
-const HeaderBooking = ({ children }: ViewProps) => {
+const HeaderBooking = ({ children }: IComponents.IHEADERBOOKING) => {
+    const navigation = useNavigation()
+
     return (
         <View style={styles.container}>
-            <AntDesign name="arrowleft" style={styles.icon} />
+            <AntDesign name="arrowleft" style={styles.icon} onPress={() => navigation.goBack()} />
             <Text style={styles.title}>{children}</Text>
             <AntDesign name="plus" style={styles.icon} />
         </View>
@@ -21,6 +25,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: style.colors.blue.bg,
+        marginTop: style.sizes.margin.m_20,
         padding: style.sizes.padding.p_20,
     },
     icon: {

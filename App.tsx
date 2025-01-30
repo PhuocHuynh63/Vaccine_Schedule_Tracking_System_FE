@@ -1,11 +1,7 @@
 
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import StackNavigation from './src/routes/navigate/stack.navigation';
-
-const Stack = createStackNavigator();
-
 
 export default function App() {
   return (
