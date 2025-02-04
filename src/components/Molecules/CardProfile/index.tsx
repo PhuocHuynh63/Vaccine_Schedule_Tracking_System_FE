@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
         paddingBottom: style.sizes.padding.p_8,
         borderBottomWidth: 1,
         borderBottomColor: style.colors.grey.bgLight,
-        backgroundColor: style.colors.white.bg,
     },
     right: {
         justifyContent: 'center',

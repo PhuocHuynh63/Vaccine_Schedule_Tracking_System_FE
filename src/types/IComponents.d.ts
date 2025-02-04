@@ -8,7 +8,7 @@ declare namespace IComponents {
     }
 
     export interface IBUTTON extends TouchableOpacityProps {
-        children: React.ReactNode;
+        title: React.ReactNode;
         loading?: boolean;
         disabled?: boolean;
     }

@@ -4,15 +4,15 @@ import { IComponents } from "src/types/IComponents";
 
 
 
-export const Button = ({ children, loading, disabled, style: customStyle, ...props }: IComponents.IBUTTON) => {
+export const Button = ({ title, loading, disabled, style, ...props }: IComponents.IBUTTON) => {
     return (
         <TouchableOpacity
-            style={[styles.container, disabled && styles.disabled, customStyle]}
+            style={[styles.container, disabled && styles.disabled, style]}
             disabled={disabled || loading}
             activeOpacity={0.7}
             {...props}
         >
-            {loading ? <ActivityIndicator color="white" /> : <Text style={styles.text}>{children}</Text>}
+            {loading ? <ActivityIndicator color="white" /> : <Text style={styles.text}>{title}</Text>}
         </TouchableOpacity>
     );
 };
