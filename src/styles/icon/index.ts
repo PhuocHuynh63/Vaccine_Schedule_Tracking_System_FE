@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { style } from "../../themes";
+import { style } from "@themes/index";
 
 export const iconStyles = StyleSheet.create({
     icon: {
