@@ -4,7 +4,9 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
+      "@atoms/*": ["src/components/Atoms/*"],
+      "@molecules/*": ["src/components/Molecules/*"],
+      "@organisms/*": ["src/components/Organisms/*"],
       "@containers/*": ["src/containers/*"],
       "@routes/*": ["src/routes/*"],
       "@screens/*": ["src/screens/*"],

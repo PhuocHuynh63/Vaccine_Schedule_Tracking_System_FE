@@ -2,9 +2,9 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { ROUTES } from '@routes/index';
-import BlockInfo from '@components/Molecules/BlockInfo';
 import { formatDate } from '@utils/helper/date';
 import { RootStackParamList } from 'src/types/INavigates';
+import BlockInfo from '@molecules/BlockInfo';
 
 const VaccinatorProfile = () => {
     const route = useRoute<RouteProp<RootStackParamList, ROUTES.VACCINATOR_PROFILE>>();

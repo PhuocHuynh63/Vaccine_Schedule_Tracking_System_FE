@@ -2,8 +2,9 @@ import React from 'react'
 import { FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native'
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { IComponents } from 'src/types/IComponents';
-import Avatar from '@components/Atoms/Avatar/indext';
+
 import { style } from '@themes/index';
+import Avatar from '@atoms/Avatar';
 
 
 const CardProfile = ({ onPress }: IComponents.ICARDPROFILE) => {

@@ -1,10 +1,11 @@
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
+import { Button } from '@atoms/Button'
 
 const FooterBooking = () => {
     return (
         <View>
-            <Text>FooterBooking</Text>
+            <Button>Add service profile</Button>
         </View>
     )
 }

@@ -1,12 +1,10 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { NavigationProp, useNavigation } from '@react-navigation/native'
-
-import { Search } from '@components/Atoms/Search'
-import CardProfile from '@components/Molecules/CardProfile'
-import { Button } from '@components/Atoms/Button'
 import { RootStackParamList } from 'src/types/INavigates'
 import { ROUTES } from '@routes/index'
+import { Search } from '@atoms/Search'
+import CardProfile from '@molecules/CardProfile'
 
 const ServiceProfile = () => {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>()
@@ -15,7 +13,6 @@ const ServiceProfile = () => {
         <View style={styles.container}>
             <Search placeholder='Find a vaccinator' />
             <CardProfile onPress={() => navigation.navigate(ROUTES.VACCINATOR_PROFILE, { userId: '123' })} />
-            <Button>Add service profile</Button>
         </View>
     )
 }
