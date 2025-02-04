@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import { style } from '../../../themes'
+import { style } from '@themes/index';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 const Avatar = () => {

@@ -1,9 +1,10 @@
 import React from 'react'
 import { FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native'
-import { style } from '../../../themes'
-import Avatar from '../../Atoms/Avatar/indext'
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-import { IComponents } from '../../../types/IComponents';
+import { IComponents } from 'src/types/IComponents';
+import Avatar from '@components/Atoms/Avatar/indext';
+import { style } from '@themes/index';
+
 
 const CardProfile = ({ onPress }: IComponents.ICARDPROFILE) => {
     return (
@@ -38,6 +39,7 @@ const styles = StyleSheet.create({
         paddingBottom: style.sizes.padding.p_8,
         borderBottomWidth: 1,
         borderBottomColor: style.colors.grey.bgLight,
+        backgroundColor: style.colors.white.bg,
     },
     right: {
         justifyContent: 'center',

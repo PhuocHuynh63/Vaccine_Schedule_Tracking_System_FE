@@ -3,6 +3,7 @@ import { TouchableOpacityProps, ViewProps } from "react-native";
 declare namespace IComponents {
     export interface IHEADERBOOKING extends ViewProps {
         children: string;
+        icon?: React.ReactNode;
         onPress?: () => void;
     }
 
@@ -18,5 +19,10 @@ declare namespace IComponents {
 
     export interface ICARDPROFILE extends TouchableOpacityProps {
         onPress: () => void;
+    }
+
+    export interface IBLOCKINFO extends ViewProps {
+        title: string;
+        content: string;
     }
 }
