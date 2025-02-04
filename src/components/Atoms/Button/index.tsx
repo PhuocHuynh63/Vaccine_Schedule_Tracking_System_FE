@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, ActivityIndicator } from "react-native";
-import { IComponents } from "../../../types/IComponents";
-import { style } from "../../../themes";
+import { style } from "@themes/index";
+import { IComponents } from "src/types/IComponents";
+
 
 
 export const Button = ({ children, loading, disabled, style: customStyle, ...props }: IComponents.IBUTTON) => {

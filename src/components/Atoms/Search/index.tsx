@@ -1,8 +1,9 @@
 import React from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
 import Feather from '@expo/vector-icons/Feather';
-import { style } from '../../../themes';
-import { IComponents } from '../../../types/IComponents';
+import { IComponents } from 'src/types/IComponents';
+import { style } from '@themes/index';
+
 
 export const Search = ({ placeholder }: IComponents.ISEARCH) => {
     return (

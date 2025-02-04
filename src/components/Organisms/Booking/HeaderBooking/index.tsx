@@ -1,18 +1,18 @@
 import React from 'react'
 import { StyleSheet, Text, View, ViewProps } from 'react-native'
-import { style } from '../../../../themes';
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { IComponents } from '../../../../types/IComponents';
 import { useNavigation } from '@react-navigation/core';
+import { IComponents } from 'src/types/IComponents';
+import { style } from '@themes/index';
 
-const HeaderBooking = ({ children }: IComponents.IHEADERBOOKING) => {
+const HeaderBooking = ({ children, icon }: IComponents.IHEADERBOOKING) => {
     const navigation = useNavigation()
 
     return (
         <View style={styles.container}>
             <AntDesign name="arrowleft" style={styles.icon} onPress={() => navigation.goBack()} />
             <Text style={styles.title}>{children}</Text>
-            <AntDesign name="plus" style={styles.icon} />
+            {icon}
         </View>
     )
 }
@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: style.colors.blue.bg,
         marginTop: style.sizes.margin.m_20,
-        padding: style.sizes.padding.p_20,
+        paddingVertical: style.sizes.padding.p_20,
+        paddingHorizontal: style.sizes.padding.p_12,
     },
     icon: {
         fontSize: style.fonts.size.superLarge,

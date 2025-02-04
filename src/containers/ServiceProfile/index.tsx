@@ -1,11 +1,12 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { NavigationProp, useNavigation } from '@react-navigation/native'
-import { Button } from '../../components/Atoms/Button'
-import { Search } from '../../components/Atoms/Search'
-import CardProfile from '../../components/Molecules/CardProfile'
-import { RootStackParamList } from '../../types/INavigates'
-import { ROUTES } from '../../routes'
+
+import { Search } from '@components/Atoms/Search'
+import CardProfile from '@components/Molecules/CardProfile'
+import { Button } from '@components/Atoms/Button'
+import { RootStackParamList } from 'src/types/INavigates'
+import { ROUTES } from '@routes/index'
 
 const ServiceProfile = () => {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>()
