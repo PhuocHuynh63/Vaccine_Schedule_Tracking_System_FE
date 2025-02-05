@@ -2,9 +2,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Animated, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { style } from '@themes/index'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import Entypo from '@expo/vector-icons/Entypo';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import SelectVaccinationSite from './components/Button';
+
 
 const VaccinationInfoBox = () => {
 
@@ -94,9 +97,26 @@ const VaccinationInfoBox = () => {
                             Select the desired vaccination center <Text style={[styles.vaccineInfo, { color: style.colors.red.bg, fontWeight: 'bold' }]}>*</Text>
                         </Text>
 
-                        <SelectVaccinationSite />
+                        <SelectVaccinationSite>
+                            <Text style={styles.textSelect}>Select Vaccination Site</Text>
+                            <Entypo name="chevron-small-right" size={24} color="black" />
+                        </SelectVaccinationSite>
+                    </View>
+
+                    <View>
+                        <Text style={styles.vaccineInfo}>
+                            Select vaccination date <Text style={[styles.vaccineInfo, { color: style.colors.red.bg, fontWeight: 'bold' }]}>*</Text>
+                        </Text>
+
+                        <SelectVaccinationSite>
+                            <Text style={styles.textSelect}>Select Date</Text>
+                            <FontAwesome name="calendar" size={18} color="black" />
+                        </SelectVaccinationSite>
                     </View>
                 </View>
+
+
+                
             </View>
         </View>
     )
@@ -159,5 +179,10 @@ const styles = StyleSheet.create({
     vaccineInfo: {
         fontSize: style.fonts.size.large,
         marginLeft: style.sizes.margin.m_12,
+    },
+    textSelect: {
+        color: style.colors.grey.textLight,
+        fontSize: style.fonts.size.large,
+        textAlign: 'left',
     },
 })

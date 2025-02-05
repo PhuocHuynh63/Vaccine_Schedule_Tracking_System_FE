@@ -2,11 +2,12 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Button } from '@atoms/Button'
 import { style } from '@themes/index'
+import Entypo from '@expo/vector-icons/Entypo';
 
-const SelectVaccinationSite = () => {
+const SelectVaccinationSite = ({ children }: { children: React.ReactNode }) => {
     return (
         <Button style={styles.container}>
-            <Text style={styles.text}>Select Vaccination Site</Text>
+            {children}
         </Button>
     )
 }
@@ -15,6 +16,8 @@ export default SelectVaccinationSite
 
 const styles = StyleSheet.create({
     container: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         backgroundColor: 'transparent',
         borderWidth: 1,
         borderColor: style.colors.grey.line,
@@ -24,9 +27,5 @@ const styles = StyleSheet.create({
         marginBottom: style.sizes.margin.m_20,
         borderRadius: style.sizes.borderRadius.br_7,
     },
-    text: {
-        color: style.colors.blue.bg,
-        fontWeight: '600',
-        fontSize: style.fonts.size.large,
-    },
+    
 })

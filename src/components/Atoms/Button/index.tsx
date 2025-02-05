@@ -4,7 +4,7 @@ import { IComponents } from "src/types/IComponents";
 
 
 
-export const Button = ({ children, loading, disabled, style, icon, ...props }: IComponents.IBUTTON) => {
+export const Button = ({ children, loading, disabled, style, ...props }: IComponents.IBUTTON) => {
     return (
         <TouchableOpacity
             style={[styles.container, disabled && styles.disabled, style]}
@@ -13,7 +13,6 @@ export const Button = ({ children, loading, disabled, style, icon, ...props }: I
             {...props}
         >
             {loading ? <ActivityIndicator color="white" /> : children}
-            {icon}
         </TouchableOpacity>
     );
 };

@@ -11,7 +11,6 @@ declare namespace IComponents {
         chilrent?: React.ReactNode;
         loading?: boolean;
         disabled?: boolean;
-        icon?: React.ReactNode;
     }
 
     export interface ISEARCH extends ViewProps {
