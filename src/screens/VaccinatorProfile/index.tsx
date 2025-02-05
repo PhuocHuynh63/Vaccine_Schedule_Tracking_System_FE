@@ -1,17 +1,22 @@
 import React from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { ROUTES } from '@routes/index';
 import { formatDate } from '@utils/helper/date';
 import { RootStackParamList } from 'src/types/INavigates';
 import BlockInfo from '@molecules/BlockInfo';
 import { Button } from '@atoms/Button';
 import { style } from '@themes/index';
+import { fontStyles } from '@styles/fonts';
 
 const VaccinatorProfile = () => {
     const route = useRoute<RouteProp<RootStackParamList, ROUTES.VACCINATOR_PROFILE>>();
+    const { userId: user } = route.params;
+
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
     const data = [
+        { title: 'ID', content: '123' },
         { title: 'Fullname', content: 'Huynh Minh Phuoc' },
         { title: 'Phone', content: '0123 456 789' },
         { title: 'Birthday', content: formatDate('2025-02-03T00:00:00Z') },
@@ -29,7 +34,9 @@ const VaccinatorProfile = () => {
             </ScrollView>
 
             <View style={styles.buttonContainer}>
-                <Button title='Choose the person to vaccinate' />
+                <Button onPress={() => navigation.navigate(ROUTES.VACCINATION_INFO, { users: [{ userId: user }] })}>
+                    <Text style={[fontStyles.fontButton]}>Choose the person to vaccinate</Text>
+                </Button>
             </View>
         </View>
     )

@@ -7,6 +7,7 @@ import { iconStyles } from '@styles/icon';
 import HeaderBooking from '@organisms/Booking/HeaderBooking';
 import VaccinatorProfile from '@screens/VaccinatorProfile';
 import ListVaccinatorProfile from '@screens/ServiceProfile';
+import VaccinationInfo from '@screens/VaccinationInfo';
 
 const Stack = createStackNavigator();
 
@@ -35,6 +36,18 @@ const StackNavigation = () => {
                         />
                 }}
             />
+            <Stack.Screen
+                name={ROUTES.VACCINATION_INFO}
+                component={VaccinationInfo}
+                options={{
+                    header: () =>
+                        <HeaderBooking
+                            children={'Information about the person being vaccinated'}
+                            icon={<AntDesign name="edit" style={iconStyles.icon} />}
+                        />
+                }}
+            />
+
         </Stack.Navigator>
     )
 }

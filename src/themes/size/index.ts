@@ -22,11 +22,11 @@ export const sizes = {
 
     borderRadius: {
         br_0: 0,
-        br_1: 3,
-        br_2: 5,
-        br_3: 7,
-        br_4: 13,
-        br_5: 20,
+        br_3: 3,
+        br_5: 5,
+        br_7: 7,
+        br_13: 13,
+        br_20: 20,
         circle: 50,
     },
 };
