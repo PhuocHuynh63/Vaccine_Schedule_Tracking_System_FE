@@ -5,9 +5,10 @@ import { ROUTES } from '@routes/index'
 import { Search } from '@atoms/Search'
 import CardProfile from '@molecules/CardProfile'
 import { ScrollView } from 'react-native-gesture-handler'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 import { Button } from '@atoms/Button'
 import { style } from '@themes/index'
+import { fontStyles } from '@styles/fonts'
 
 const ListVaccinatorProfile = () => {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>()
@@ -31,7 +32,9 @@ const ListVaccinatorProfile = () => {
             </ScrollView>
 
             <View style={styles.buttonContainer}>
-                <Button title='Add service profile' />
+                <Button>
+                    <Text style={[fontStyles.fontButton]}>Add service profile</Text>
+                </Button>
             </View>
         </View>
     )

@@ -34,8 +34,11 @@ const styles = StyleSheet.create({
         color: style.colors.white.bg,
     },
     title: {
+        flex: 1,
+        flexWrap: 'wrap',
         color: style.colors.white.bg,
         fontSize: style.fonts.size.xlarge,
         fontWeight: 600,
+        textAlign: 'center',
     }
 })
