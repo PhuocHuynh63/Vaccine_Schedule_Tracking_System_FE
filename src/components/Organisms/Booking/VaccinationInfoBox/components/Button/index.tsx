@@ -1,31 +1,27 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
-import { Button } from '@atoms/Button'
 import { style } from '@themes/index'
-import Entypo from '@expo/vector-icons/Entypo';
+import { Button } from '@atoms/Button'
 
-const SelectVaccinationSite = ({ children }: { children: React.ReactNode }) => {
+const ButtonAction = ({ children, style }: { children: React.ReactNode, style?: object }) => {
     return (
-        <Button style={styles.container}>
+        <Button style={[styles.container, style]}>
             {children}
         </Button>
+
     )
 }
 
-export default SelectVaccinationSite
+export default ButtonAction
 
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor: 'transparent',
-        borderWidth: 1,
-        borderColor: style.colors.grey.line,
-        padding: 10,
-        marginHorizontal: style.sizes.margin.m_12,
-        marginTop: style.sizes.margin.m_8,
-        marginBottom: style.sizes.margin.m_20,
-        borderRadius: style.sizes.borderRadius.br_7,
-    },
-    
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 47,
+        paddingHorizontal: style.sizes.padding.p_20,
+        marginHorizontal: 0,
+        borderRadius: style.sizes.borderRadius.br_13,
+    }
 })

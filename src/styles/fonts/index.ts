@@ -7,4 +7,9 @@ export const fontStyles = StyleSheet.create({
         fontWeight: "600",
         fontSize: style.fonts.size.large,
     },
+    oppositeFont: {
+        color: style.colors.blue.bg,
+        fontWeight: "600",
+        fontSize: style.fonts.size.large,
+    }
 });

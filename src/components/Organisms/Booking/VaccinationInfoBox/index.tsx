@@ -6,8 +6,12 @@ import Entypo from '@expo/vector-icons/Entypo';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import SelectVaccinationSite from './components/Button';
-
+import Feather from '@expo/vector-icons/Feather';
+import SelectVaccinationSite from './components/Select';
+import { fontStyles } from '@styles/fonts';
+import ButtonAction from './components/Button';
+import { blockStyles } from '@styles/block';
+import { flexBoxStyles } from '@styles/flexBox';
 
 const VaccinationInfoBox = () => {
 
@@ -113,10 +117,35 @@ const VaccinationInfoBox = () => {
                             <FontAwesome name="calendar" size={18} color="black" />
                         </SelectVaccinationSite>
                     </View>
+
+                    <View>
+                        <Text style={styles.vaccineInfo}>
+                            Select vaccination <Text style={[styles.vaccineInfo, { color: style.colors.red.bg, fontWeight: 'bold' }]}>*</Text>
+                        </Text>
+
+                        <View style={styles.cartEmpty}>
+                            <FontAwesome5 name="list-alt" size={100} color="rgba(106,107,187,0.2)" />
+                            <Text style={styles.textCartEmpty}>List of vaccines to buy is empty</Text>
+                        </View>
+                    </View>
+
+                    <View style={styles.actionButton}>
+                        <ButtonAction>
+                            <FontAwesome5 name="shopping-cart" size={18} color={style.colors.white.bg} style={{ marginRight: 7 }} />
+                            <Text style={[fontStyles.fontButton]}>Add to cart</Text>
+                        </ButtonAction>
+                        <ButtonAction style={[blockStyles.oppositeBlock]}>
+                            <Text style={[fontStyles.fontButton, fontStyles.oppositeFont]}>Add new vaccine</Text>
+                        </ButtonAction>
+                    </View>
+
+                    <View style={[flexBoxStyles.centerColumn]}>
+                        <Feather name="chevrons-up" size={24} color="black" />
+                    </View>
                 </View>
 
 
-                
+
             </View>
         </View>
     )
@@ -185,4 +214,21 @@ const styles = StyleSheet.create({
         fontSize: style.fonts.size.large,
         textAlign: 'left',
     },
+    cartEmpty: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginVertical: 30,
+    },
+    textCartEmpty: {
+        fontSize: style.fonts.size.large,
+        color: style.colors.grey.textLight,
+        marginTop: style.sizes.margin.m_8,
+    },
+    actionButton: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: style.sizes.margin.m_8,
+        marginBottom: style.sizes.margin.m_20,
+    },
+
 })
