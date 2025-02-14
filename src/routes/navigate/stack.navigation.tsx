@@ -8,12 +8,18 @@ import HeaderBooking from '@organisms/Booking/HeaderBooking';
 import VaccinatorProfile from '@screens/VaccinatorProfile';
 import ListVaccinatorProfile from '@screens/ServiceProfile';
 import VaccinationInfo from '@screens/VaccinationInfo';
+import ChooseAuthenScreen from '@screens/ChooseAuthen';
 
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
     return (
         <Stack.Navigator>
+            <Stack.Screen
+                name={ROUTES.CHOOSE_AUTHEN}
+                component={ChooseAuthenScreen}
+                options={{ headerShown: false }}
+            />
             <Stack.Screen
                 name={ROUTES.LIST_VACCINATOR_PROFILE}
                 component={ListVaccinatorProfile}

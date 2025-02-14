@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native'
 import React from 'react'
-import { Button } from '@atoms/Button'
+import { ButtonOpacity } from '@atoms/ButtonOpacity'
 import { style } from '@themes/index'
 
 const SelectVaccinationSite = ({ children }: { children: React.ReactNode }) => {
     return (
-        <Button style={styles.container}>
+        <ButtonOpacity style={styles.container}>
             {children}
-        </Button>
+        </ButtonOpacity>
     )
 }
 
