@@ -1,19 +1,17 @@
-import { StyleSheet, Text, TouchableOpacity, ActivityIndicator } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, ActivityIndicator, TouchableHighlight, View } from "react-native";
 import { style } from "@themes/index";
 import { IComponents } from "src/types/IComponents";
 
-
-
-export const Button = ({ children, loading, disabled, style, ...props }: IComponents.IBUTTON) => {
+export const ButtonHighlight = ({ children, loading, disabled, style, ...props }: IComponents.IBUTTON) => {
     return (
-        <TouchableOpacity
+        <TouchableHighlight
             style={[styles.container, disabled && styles.disabled, style]}
             disabled={disabled || loading}
-            activeOpacity={0.7}
+            underlayColor="#DDDDDD"
             {...props}
         >
             {loading ? <ActivityIndicator color="white" /> : children}
-        </TouchableOpacity>
+        </TouchableHighlight>
     );
 };
 
