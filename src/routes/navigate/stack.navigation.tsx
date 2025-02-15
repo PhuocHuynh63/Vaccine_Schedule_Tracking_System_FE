@@ -1,18 +1,22 @@
-import { StyleSheet } from 'react-native'
-import React from 'react'
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import ServiceProfileScreen from '../../screens/ServiceProfile';
+import BottomTabNavigator from './bottomTab.navigation';
+import DetailsScreen from '../../screens/DetailsScreen.js'; // Một màn hình chi tiết ví dụ
 
 const Stack = createStackNavigator();
 
-const StackNavigation = () => {
-    return (
-        <Stack.Navigator>
-            <Stack.Screen name="Booking" component={ServiceProfileScreen} />
-        </Stack.Navigator>
-    )
+export default function StackNavigation() {
+  return (
+    <Stack.Navigator>
+      {/* Màn hình chính sẽ là BottomTabNavigator */}
+      <Stack.Screen 
+        name="Main" 
+        component={BottomTabNavigator} 
+        options={{ headerShown: false }} 
+      />
+      
+      {/* Màn hình khác ví dụ */}
+      <Stack.Screen name="Details" component={DetailsScreen} />
+    </Stack.Navigator>
+  );
 }
-
-export default StackNavigation
-
-const styles = StyleSheet.create({})
