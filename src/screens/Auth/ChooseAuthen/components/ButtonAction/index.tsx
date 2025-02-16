@@ -3,10 +3,11 @@ import { StyleSheet, Text } from 'react-native'
 import { style } from '@themes/index'
 import { fontStyles } from '@styles/fonts'
 import { ButtonHighlight } from '@atoms/ButtonHighlight'
+import { IComponents } from 'src/types/IComponents'
 
-const ButtonAction = ({ children }: { children: React.ReactNode }) => {
+const ButtonAction = ({ children, loading, disabled, style, ...props }: IComponents.IBUTTON) => {
     return (
-        <ButtonHighlight style={styles.container}>
+        <ButtonHighlight style={styles.container} onPress={props.onPress}>
             <Text style={[fontStyles.oppositeFont]}>{children}</Text>
         </ButtonHighlight>
     )

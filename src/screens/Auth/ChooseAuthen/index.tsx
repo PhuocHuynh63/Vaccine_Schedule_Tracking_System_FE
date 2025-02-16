@@ -2,9 +2,14 @@ import { Animated, Image, PanResponder, StyleSheet, Text, View } from 'react-nat
 import React, { useRef } from 'react'
 import { style } from '@themes/index'
 import ButtonAction from './components/ButtonAction'
-
+import { AuthStyles } from '@styles/auth'
+import { NavigationProp, useNavigation } from '@react-navigation/native'
+import { RootStackParamList } from 'src/types/INavigates'
+import { ROUTES } from '@routes/index'
 
 const ChooseAuthenScreen = () => {
+
+    //#region PanResponder
     const scale = useRef(new Animated.Value(1)).current;
     const translateY = useRef(new Animated.Value(0)).current;
     const contentTranslateY = useRef(new Animated.Value(0)).current;
@@ -44,9 +49,12 @@ const ChooseAuthenScreen = () => {
             },
         })
     ).current;
+    // #endregion
+
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>()
 
     return (
-        <View style={styles.container} {...panResponder.panHandlers}>
+        <View style={AuthStyles.main} {...panResponder.panHandlers}>
             <Animated.Image
                 source={{ uri: 'https://res.cloudinary.com/dwyzqcunj/image/upload/v1739522069/image_1_msk4z8.png' }}
                 style={[styles.banner, { transform: [{ scale }, { translateY }] }]}
@@ -58,7 +66,7 @@ const ChooseAuthenScreen = () => {
                 </Text>
                 <View style={styles.actionLogin}>
                     <ButtonAction>Sign In</ButtonAction>
-                    <ButtonAction>Sign Up</ButtonAction>
+                    <ButtonAction onPress={() => navigation.navigate(ROUTES.REGISTER)}>Sign Up</ButtonAction>
                 </View>
             </Animated.View>
         </View>
@@ -68,11 +76,6 @@ const ChooseAuthenScreen = () => {
 export default ChooseAuthenScreen
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: style.colors.blue.bg,
-        opacity: 0.9,
-        flex: 1
-    },
     banner: {
         flex: 2,
     },
