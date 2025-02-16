@@ -8,7 +8,8 @@ import HeaderBooking from '@organisms/Booking/HeaderBooking';
 import VaccinatorProfile from '@screens/VaccinatorProfile';
 import ListVaccinatorProfile from '@screens/ServiceProfile';
 import VaccinationInfo from '@screens/VaccinationInfo';
-import ChooseAuthenScreen from '@screens/ChooseAuthen';
+import ChooseAuthenScreen from '@screens/Auth/ChooseAuthen';
+import RegisterScreen from '@screens/Auth/Register';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,11 @@ const StackNavigation = () => {
             <Stack.Screen
                 name={ROUTES.CHOOSE_AUTHEN}
                 component={ChooseAuthenScreen}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name={ROUTES.REGISTER}
+                component={RegisterScreen}
                 options={{ headerShown: false }}
             />
             <Stack.Screen

@@ -4,6 +4,7 @@ export const colors = {
     },
     blue: {
         bg: '#0A56DF',
+        bg_opacity_09: 'rgba(10, 86, 223, 0.9)',
     },
     white: {
         bg: '#FFFFFF',
