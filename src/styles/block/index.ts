@@ -10,4 +10,17 @@ export const blockStyles = StyleSheet.create({
         borderWidth: 1,
         borderColor: style.colors.blue.bg,
     },
+    input: {
+        borderWidth: 1,
+        backgroundColor: style.colors.white.bg,
+        borderColor: style.colors.grey.line,
+        marginHorizontal: 25,
+        borderRadius: 5,
+        paddingHorizontal: style.sizes.padding.p_12,
+        height: 50,
+    },
+    label: {
+        marginHorizontal: 25,
+        marginBottom: 5,
+    }
 })

@@ -3,7 +3,7 @@ import { ROUTES } from '@routes/index';
 
 type RootStackParamList = {
     [ROUTES.CHOOSE_AUTHEN]: undefined;
-    [ROUTES.REGISTER]: undefined;
+    [ROUTES.SIGNIN]: undefined;
     [ROUTES.LIST_VACCINATOR_PROFILE]: undefined;
     [ROUTES.VACCINATOR_PROFILE]: { userId: string };
     [ROUTES.VACCINATION_INFO]: { users: [{ userId: string }] };

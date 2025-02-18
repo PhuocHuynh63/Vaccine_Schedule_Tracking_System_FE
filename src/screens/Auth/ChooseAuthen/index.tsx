@@ -1,11 +1,14 @@
-import { Animated, Image, PanResponder, StyleSheet, Text, View } from 'react-native'
+import { Animated, PanResponder, StyleSheet, Text, View } from 'react-native'
 import React, { useRef } from 'react'
 import { style } from '@themes/index'
-import ButtonAction from './components/ButtonAction'
+
 import { AuthStyles } from '@styles/auth'
 import { NavigationProp, useNavigation } from '@react-navigation/native'
 import { RootStackParamList } from 'src/types/INavigates'
 import { ROUTES } from '@routes/index'
+import ButtonAction from '../components/ButtonAction'
+import { LinearGradient } from 'expo-linear-gradient'
+
 
 const ChooseAuthenScreen = () => {
 
@@ -54,7 +57,14 @@ const ChooseAuthenScreen = () => {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>()
 
     return (
-        <View style={AuthStyles.main} {...panResponder.panHandlers}>
+        <LinearGradient
+            style={[AuthStyles.main]}
+            colors={['#0A56DF', '#497ee2']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 2 }}
+            {...panResponder.panHandlers}
+        >
+
             <Animated.Image
                 source={{ uri: 'https://res.cloudinary.com/dwyzqcunj/image/upload/v1739522069/image_1_msk4z8.png' }}
                 style={[styles.banner, { transform: [{ scale }, { translateY }] }]}
@@ -65,11 +75,10 @@ const ChooseAuthenScreen = () => {
                     Let Your Children {"\n"} Be Healthy
                 </Text>
                 <View style={styles.actionLogin}>
-                    <ButtonAction>Sign In</ButtonAction>
-                    <ButtonAction onPress={() => navigation.navigate(ROUTES.REGISTER)}>Sign Up</ButtonAction>
+                    <ButtonAction onPress={() => navigation.navigate(ROUTES.SIGNIN)}>Sign In</ButtonAction>
                 </View>
             </Animated.View>
-        </View>
+        </LinearGradient>
     )
 }
 
