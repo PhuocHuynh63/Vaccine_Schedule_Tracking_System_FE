@@ -5,7 +5,7 @@ import { ROUTES } from '@routes/index';
 import { formatDate } from '@utils/helper/date';
 import { RootStackParamList } from 'src/types/INavigates';
 import BlockInfo from '@molecules/BlockInfo';
-import { ButtonOpacity } from '@atoms/ButtonOpacity';
+import { Button } from '@atoms/Button';
 import { style } from '@themes/index';
 import { fontStyles } from '@styles/fonts';
 
@@ -34,9 +34,9 @@ const VaccinatorProfile = () => {
             </ScrollView>
 
             <View style={styles.buttonContainer}>
-                <ButtonOpacity onPress={() => navigation.navigate(ROUTES.VACCINATION_INFO, { users: [{ userId: user }] })}>
+                <Button onPress={() => navigation.navigate(ROUTES.VACCINATION_INFO, { users: [{ userId: user }] })}>
                     <Text style={[fontStyles.fontButton]}>Choose the person to vaccinate</Text>
-                </ButtonOpacity>
+                </Button>
             </View>
         </View>
     )

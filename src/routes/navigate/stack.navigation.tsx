@@ -11,6 +11,8 @@ import VaccinationInfo from '@screens/VaccinationInfo';
 import ChooseAuthenScreen from '@screens/Auth/ChooseAuthen';;
 import SignInScreen from '@screens/Auth/SignIn';
 import PasswordScreen from '@screens/Auth/Password';
+import AddNewVaccine from '@screens/AddNewVaccine';
+import ChooseAuthenScreen from '@screens/Auth/ChooseAuthen';
 
 const Stack = createStackNavigator();
 
@@ -65,7 +67,17 @@ const StackNavigation = () => {
                         />
                 }}
             />
-
+            <Stack.Screen
+                name={ROUTES.ADD_NEW_VACCINE}
+                component={AddNewVaccine}
+                options={{
+                    header: () =>
+                        <HeaderBooking
+                            children={'Add new vaccine'}
+                            icon={<AntDesign name="edit" style={iconStyles.icon} />}
+                        />
+                }}
+            />
         </Stack.Navigator>
     )
 }

@@ -8,7 +8,6 @@ const ButtonAction = ({ children, style }: { children: React.ReactNode, style?: 
         <ButtonOpacity style={[styles.container, style]}>
             {children}
         </ButtonOpacity>
-
     )
 }
 

@@ -21,6 +21,10 @@ declare namespace IComponents {
         onPress: () => void;
     }
 
+    export interface IVACCINECARD extends TouchableOpacityProps {
+        onPress: () => void;
+    }
+
     export interface IBLOCKINFO extends ViewProps {
         title: string;
         content: string;
