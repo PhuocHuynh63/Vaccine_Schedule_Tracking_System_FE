@@ -12,7 +12,6 @@ import ChooseAuthenScreen from '@screens/Auth/ChooseAuthen';;
 import SignInScreen from '@screens/Auth/SignIn';
 import PasswordScreen from '@screens/Auth/Password';
 import AddNewVaccine from '@screens/AddNewVaccine';
-import ChooseAuthenScreen from '@screens/Auth/ChooseAuthen';
 
 const Stack = createStackNavigator();
 
