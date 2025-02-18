@@ -2,12 +2,10 @@ import { StyleSheet, Text, TouchableOpacity, ActivityIndicator } from "react-nat
 import { style } from "@themes/index";
 import { IComponents } from "src/types/IComponents";
 
-
-
 export const ButtonOpacity = ({ children, loading, disabled, style, ...props }: IComponents.IBUTTON) => {
     return (
         <TouchableOpacity
-            style={[styles.container, disabled && styles.disabled, style]}
+            style={[styles.container, style, disabled && styles.disabled]}
             disabled={disabled || loading}
             activeOpacity={0.7}
             {...props}
@@ -27,6 +25,6 @@ const styles = StyleSheet.create({
         borderRadius: style.sizes.borderRadius.br_3,
     },
     disabled: {
-        backgroundColor: "#ccc",
+        backgroundColor: style.colors.blue.disabled,
     },
 });

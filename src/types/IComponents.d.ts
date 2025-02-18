@@ -29,4 +29,9 @@ declare namespace IComponents {
         title: string;
         content: string;
     }
+
+    export interface ILINEARGRADIENT extends ViewProps {
+        children: React.ReactNode;
+        colors?: [string, string, ...string[]];
+    }
 }
