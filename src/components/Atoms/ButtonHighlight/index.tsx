@@ -1,13 +1,13 @@
-import { StyleSheet, Text, TouchableOpacity, ActivityIndicator, TouchableHighlight, View } from "react-native";
+import { StyleSheet, ActivityIndicator, TouchableHighlight } from "react-native";
 import { style } from "@themes/index";
 import { IComponents } from "src/types/IComponents";
 
 export const ButtonHighlight = ({ children, loading, disabled, style, ...props }: IComponents.IBUTTON) => {
     return (
         <TouchableHighlight
-            style={[styles.container, disabled && styles.disabled, style]}
+            style={[styles.container, style, disabled && styles.disabled]}
             disabled={disabled || loading}
-            underlayColor="#DDDDDD"
+            underlayColor="#f2f2f2"
             {...props}
         >
             {loading ? <ActivityIndicator color="white" /> : children}
@@ -25,6 +25,6 @@ const styles = StyleSheet.create({
         borderRadius: style.sizes.borderRadius.br_3,
     },
     disabled: {
-        backgroundColor: "#d65959",
+        backgroundColor: style.colors.blue.disabled,
     },
 });

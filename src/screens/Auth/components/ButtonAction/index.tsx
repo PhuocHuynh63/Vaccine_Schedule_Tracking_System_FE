@@ -2,17 +2,14 @@ import React from 'react'
 import { StyleSheet, Text } from 'react-native'
 import { style } from '@themes/index'
 import { fontStyles } from '@styles/fonts'
-import { ButtonHighlight } from '@atoms/ButtonHighlight'
 import { IComponents } from 'src/types/IComponents'
+import { ButtonOpacity } from '@atoms/ButtonOpacity'
 
 const ButtonAction = ({ children, loading, disabled, style, ...props }: IComponents.IBUTTON) => {
-    console.log('Button disabled:', disabled); // Thêm log để kiểm tra giá trị của disabled
-
-    
     return (
-        <ButtonHighlight style={[styles.container, style]} onPress={props.onPress} disabled={disabled}>
+        <ButtonOpacity style={[styles.container, style]} onPress={props.onPress} disabled={disabled}>
             <Text style={[fontStyles.oppositeFont]}>{children}</Text>
-        </ButtonHighlight>
+        </ButtonOpacity>
     )
 }
 
