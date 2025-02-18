@@ -1,4 +1,7 @@
 export const colors = {
+    red: {
+        bg: '#FA2525',
+    },
     blue: {
         bg: '#0A56DF',
     },
@@ -6,6 +9,11 @@ export const colors = {
         bg: '#FFFFFF',
     },
     grey: {
-        line: '#B5B5B5'
+        bg: '#616161',
+        bgLight: '#DDDBE3',
+        bgDark: '#999999',
+        line: '#B5B5B5',
+        text: '#505050',
+        textLight: '#A0A0A0',
     },
 }

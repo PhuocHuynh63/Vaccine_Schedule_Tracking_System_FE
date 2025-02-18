@@ -1,17 +1,18 @@
 
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import StackNavigation from './src/routes/navigate/stack.navigation';
+import StackNavigation from '@routes/navigate/stack.navigation';
 
-const Stack = createStackNavigator();
-
+import { Provider } from "react-redux";
+import store from './src/redux/store';
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <StackNavigation></StackNavigation>
-    </NavigationContainer>
+    <Provider store={store}>
+        <NavigationContainer>
+          <StackNavigation></StackNavigation>
+        </NavigationContainer>
+    </Provider>
   );
 }
 
