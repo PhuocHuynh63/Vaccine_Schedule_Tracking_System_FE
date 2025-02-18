@@ -7,23 +7,36 @@ import { flexBoxStyles } from '@styles/flexBox'
 import { fontStyles } from '@styles/fonts'
 import ButtonAction from '../components/ButtonAction'
 import { style } from '@themes/index'
+import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native'
+import { RootStackParamList } from 'src/types/INavigates'
+import { ROUTES } from '@routes/index'
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import Entypo from '@expo/vector-icons/Entypo';
 
 const PasswordScreen = () => {
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>()
+    const route = useRoute<RouteProp<RootStackParamList, ROUTES.PASSWORD>>();
 
+    //#region React Hook Form
     const {
         control,
         handleSubmit,
         formState: { errors, isValid },
-        watch
+        watch,
+        reset,
     } = useForm({
         defaultValues: {
-            email: "",
+            password: "",
         },
         mode: "onChange",
     })
 
-    const emailValue = watch('email')
-    const onSubmit = (data: any) => console.log(data)
+    const passwordValue = watch('password')
+    const onSubmit = (data: any) => {
+        console.log(data);
+        reset();
+    }
+    //#endregion
 
     // #region Toggle password visibility
     const [showPassword, setShowPassword] = useState(false)
@@ -36,8 +49,9 @@ const PasswordScreen = () => {
                 <Image source={{ uri: 'https://media.istockphoto.com/id/1433173566/vector/mobile-phone-unlocked-notification-button-and-password-field-notice-vector-concept-of.jpg?s=612x612&w=0&k=20&c=Wgfl5Sa6cf3oHVxP0EtHvkUQfhdhHEoM_qdhjGEFnrQ=' }}
                     style={{ width: 100, height: 100, borderRadius: 50 }}
                 />
-                <Text style={[fontStyles.fontButton, styles.titleMain]}>Welcome back!</Text>
-                <Text style={{ color: style.colors.white.text, fontSize: 15 }}>Use your email to register or log in.</Text>
+                <Text style={{ color: style.colors.white.text, fontSize: 18 }}>Welcome back!</Text>
+                <Text style={[fontStyles.fontButton, styles.titleMain]}>HUYNH MINH PHUOC</Text>
+                <Text style={{ color: style.colors.white.text, fontSize: 15 }}>{route.params.email}</Text>
             </View>
 
             {/* Form */}
@@ -47,30 +61,42 @@ const PasswordScreen = () => {
                         control={control}
                         rules={{
                             required: true,
+                            minLength: 6,
                         }}
                         render={({ field: { onChange, onBlur, value } }) => (
                             <View>
-                                <Text style={blockStyles.label}>Email</Text>
+                                <Text style={blockStyles.label}>Password</Text>
                                 <View style={[blockStyles.input, flexBoxStyles.centerRowSpaceBetween]}>
                                     <TextInput
-                                        placeholder="Email"
+                                        secureTextEntry={!showPassword}
+                                        placeholder="Password"
                                         onBlur={onBlur}
                                         onChangeText={onChange}
                                         value={value}
                                     />
+                                    <FontAwesome5 name={`${showPassword ? 'eye-slash' : 'eye'}`} size={17} color="black" onPress={handleShowPassword} />
                                 </View>
                             </View>
                         )}
-                        name="email"
+                        name="password"
                     />
 
                     <ButtonAction
                         style={[styles.button, blockStyles.main]}
                         onPress={handleSubmit(onSubmit)}
-                        disabled={!emailValue || !isValid}
+                        disabled={!passwordValue || !isValid}
                     >
                         <Text style={{ color: style.colors.white.bg }}>Next</Text>
                     </ButtonAction>
+
+                    <View style={[flexBoxStyles.centerRowSpaceBetween, { marginHorizontal: 30 }]}>
+                        <View style={flexBoxStyles.centerRow}>
+                            <Entypo name="cycle" size={16} color={style.colors.blue.bg} style={{ marginRight: 5 }} />
+                            <Text style={[fontStyles.oppositeFont, { fontSize: 14 }]} onPress={() => navigation.goBack()}>Change email</Text>
+                        </View>
+                        {/* TODO: Forgot password */}
+                        <Text style={[fontStyles.oppositeFont, { fontSize: 14 }]}>Forgot password?</Text>
+                    </View>
                 </View>
 
                 <View style={styles.spacing}>
@@ -90,8 +116,8 @@ const styles = StyleSheet.create({
     title: {
         alignItems: 'center',
         justifyContent: 'center',
-        flex: 1.5,
-        gap: 13,
+        flex: 1.8,
+        gap: 8,
     },
     titleMain: {
         fontSize: 24,
@@ -101,7 +127,7 @@ const styles = StyleSheet.create({
         gap: 20,
     },
     containerForm: {
-        gap: 30,
+        gap: 20,
         backgroundColor: style.colors.white.bg,
         borderRadius: style.sizes.borderRadius.br_13,
         marginHorizontal: 30,

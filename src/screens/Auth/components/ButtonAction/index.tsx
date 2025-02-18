@@ -20,5 +20,6 @@ const styles = StyleSheet.create({
         backgroundColor: style.colors.white.bg,
         borderRadius: style.sizes.borderRadius.br_7,
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.211)',
+        marginHorizontal: 25,
     },
 })

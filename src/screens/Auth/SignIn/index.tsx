@@ -20,7 +20,8 @@ const SignInScreen = () => {
     control,
     handleSubmit,
     formState: { errors, isValid },
-    watch
+    watch,
+    reset,
   } = useForm({
     defaultValues: {
       email: "",
@@ -31,6 +32,7 @@ const SignInScreen = () => {
   const emailValue = watch('email')
   const onSubmit = (data: any) => {
     navigation.navigate(ROUTES.PASSWORD, { email: data.email })
+    reset()
   }
   //#endregion
 
@@ -118,7 +120,7 @@ const styles = StyleSheet.create({
     gap: 30,
     backgroundColor: style.colors.white.bg,
     borderRadius: style.sizes.borderRadius.br_13,
-    marginHorizontal: 30,
+    marginHorizontal: 20,
     paddingVertical: 30,
   },
   button: {
