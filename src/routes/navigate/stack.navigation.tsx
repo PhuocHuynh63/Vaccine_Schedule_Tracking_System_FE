@@ -8,6 +8,7 @@ import HeaderBooking from '@organisms/Booking/HeaderBooking';
 import VaccinatorProfile from '@screens/VaccinatorProfile';
 import ListVaccinatorProfile from '@screens/ServiceProfile';
 import VaccinationInfo from '@screens/VaccinationInfo';
+import AddNewVaccine from '@screens/AddNewVaccine';
 import ChooseAuthenScreen from '@screens/Auth/ChooseAuthen';
 import RegisterScreen from '@screens/Auth/Register';
 
@@ -59,7 +60,17 @@ const StackNavigation = () => {
                         />
                 }}
             />
-
+            <Stack.Screen
+                name={ROUTES.ADD_NEW_VACCINE}
+                component={AddNewVaccine}
+                options={{
+                    header: () =>
+                        <HeaderBooking
+                            children={'Add new vaccine'}
+                            icon={<AntDesign name="edit" style={iconStyles.icon} />}
+                        />
+                }}
+            />
         </Stack.Navigator>
     )
 }

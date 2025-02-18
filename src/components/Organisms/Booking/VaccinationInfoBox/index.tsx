@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState, useRef, useMemo, useCallback } from 'react'
 import { Animated, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { style } from '@themes/index'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
@@ -12,9 +12,22 @@ import { fontStyles } from '@styles/fonts';
 import ButtonAction from './components/Button';
 import { blockStyles } from '@styles/block';
 import { flexBoxStyles } from '@styles/flexBox';
+import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { RootStackParamList } from 'src/types/INavigates';
+import { ROUTES } from '@routes/index';
+import { Button } from '@atoms/Button';
+import BottomSheet from '@gorhom/bottom-sheet';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const VaccinationInfoBox = () => {
+    const navigation = useNavigation();
+    const route = useRoute<RouteProp<RootStackParamList, ROUTES.VACCINATOR_PROFILE>>();
+    const { userId: user } = route.params;
+    const insets = useSafeAreaInsets();
 
+    // State for bottom sheet
+    const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false);
+    
     /**
      * close or open detail user info
      */
@@ -32,7 +45,36 @@ const VaccinationInfoBox = () => {
     const toggleDetail = () => {
         setShowDetail(prevState => !prevState);
     };
-    //----------------------End----------------------//
+
+    // Ref to control Bottom Sheet
+    const bottomSheetRef = useRef<BottomSheet>(null);
+
+    // Bottom Sheet height points
+    const snapPoints = useMemo(() => ['50%'], []);
+
+    // Open Bottom Sheet
+    const openSheet = useCallback(() => {
+        console.log('Opening Bottom Sheet...');
+        setIsBottomSheetVisible(true);
+        bottomSheetRef.current?.expand();
+    }, []);
+
+    // Close Bottom Sheet
+    const closeSheet = useCallback(() => {
+        console.log('Closing Bottom Sheet...');
+        bottomSheetRef.current?.close();
+        setTimeout(() => {
+            setIsBottomSheetVisible(false);
+        }, 300);
+    }, []);
+
+    // Handle navigation from bottom sheet
+    const handleAddNewVaccine = () => {
+        closeSheet();
+        setTimeout(() => {
+            navigation.navigate(ROUTES.ADD_NEW_VACCINE, { userId: user });
+        }, 300);
+    };
 
     return (
         <View style={styles.container}>
@@ -48,7 +90,6 @@ const VaccinationInfoBox = () => {
                         </TouchableOpacity>
                     </View>
                 </View>
-
 
                 <View style={styles.detailUserContainer}>
                     <TouchableOpacity style={styles.titleDetail} activeOpacity={0.8} onPress={toggleDetail}>
@@ -94,7 +135,6 @@ const VaccinationInfoBox = () => {
                     }
                 </View>
 
-
                 <View>
                     <View>
                         <Text style={styles.vaccineInfo}>
@@ -130,23 +170,69 @@ const VaccinationInfoBox = () => {
                     </View>
 
                     <View style={styles.actionButton}>
-                        <ButtonAction>
-                            <FontAwesome5 name="shopping-cart" size={18} color={style.colors.white.bg} style={{ marginRight: 7 }} />
-                            <Text style={[fontStyles.fontButton]}>Add to cart</Text>
-                        </ButtonAction>
-                        <ButtonAction style={[blockStyles.oppositeBlock]}>
-                            <Text style={[fontStyles.fontButton, fontStyles.oppositeFont]}>Add new vaccine</Text>
-                        </ButtonAction>
+                        <Button style={styles.buttonaction} onPress={openSheet}>
+                            <FontAwesome5 name="shopping-cart" size={18} color="white" style={{ marginRight: 7 }} />
+                            <Text style={[fontStyles.fontButton]}>Add from cart</Text>
+                        </Button>
+
+                        <Button
+                            onPress={() => navigation.navigate(ROUTES.ADD_NEW_VACCINE, { userId: user })}
+                            style={[styles.buttonaction, blockStyles.oppositeBlock]} // Combine both styles
+                        >
+                            <Text style={[fontStyles.fontButton, fontStyles.oppositeFont]}>
+                                Add new vaccine
+                            </Text>
+                        </Button>
+
                     </View>
 
                     <View style={[flexBoxStyles.centerColumn]}>
                         <Feather name="chevrons-up" size={24} color="black" />
                     </View>
                 </View>
-
-
-
             </View>
+            
+            {/* Bottom Sheet - Only render when visible */}
+            {isBottomSheetVisible && (
+                <BottomSheet 
+                    ref={bottomSheetRef} 
+                    index={0}
+                    snapPoints={snapPoints} 
+                    enablePanDownToClose
+                    onClose={() => setIsBottomSheetVisible(false)}
+                    handleComponent={() => (
+                        <View style={styles.handleComponent}>
+                            <View style={styles.handle} />
+                        </View>
+                    )}
+                >
+                    <View style={[styles.sheetContent, {paddingBottom: insets.bottom}]}>
+                        <View style={styles.sheetHeader}>
+                            <Text style={styles.sheetTitle}>Select from cart</Text>
+                            <TouchableOpacity onPress={closeSheet}>
+                                <Text style={styles.closeText}>Close</Text>
+                            </TouchableOpacity>
+                        </View>
+                        
+                        <Text style={styles.sectionTitle}>Selected vaccines</Text>
+                        
+                        <View style={styles.emptyContainer}>
+                            <View style={styles.placeholderIcon}>
+                                <FontAwesome5 name="list-alt" size={50} color="rgba(106,107,187,0.2)" />
+                            </View>
+                            <Text style={styles.emptyText}>You have not selected any Vaccines yet.</Text>
+                            
+                            <TouchableOpacity style={styles.addNewButton} onPress={handleAddNewVaccine}>
+                                <Text style={styles.addNewButtonText}>Add new vaccine</Text>
+                            </TouchableOpacity>
+                        </View>
+                        
+                        <TouchableOpacity style={styles.confirmButton} onPress={closeSheet}>
+                            <Text style={styles.confirmButtonText}>Confirm</Text>
+                        </TouchableOpacity>
+                    </View>
+                </BottomSheet>
+            )}
         </View>
     )
 }
@@ -230,5 +316,92 @@ const styles = StyleSheet.create({
         marginTop: style.sizes.margin.m_8,
         marginBottom: style.sizes.margin.m_20,
     },
-
-})
+    buttonaction: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 47,
+        paddingHorizontal: style.sizes.padding.p_20,
+        marginHorizontal: 0,
+        borderRadius: style.sizes.borderRadius.br_13,
+    },
+    handleComponent: {
+        paddingTop: 12,
+        paddingBottom: 12,
+        backgroundColor: 'white',
+        borderTopLeftRadius: 24,
+        borderTopRightRadius: 24,
+    },
+    handle: {
+        width: 40,
+        height: 4,
+        borderRadius: 2,
+        backgroundColor: '#DDDDDD',
+        alignSelf: 'center',
+    },
+    sheetContent: {
+        flex: 1,
+        padding: 16,
+        backgroundColor: 'white',
+    },
+    sheetHeader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingBottom: 16,
+        borderBottomWidth: 1,
+        borderBottomColor: '#E0E0E0',
+    },
+    sheetTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    closeText: {
+        fontSize: 16,
+        color: '#666',
+    },
+    sectionTitle: {
+        fontSize: 16,
+        fontWeight: '500',
+        marginTop: 20,
+        marginBottom: 10,
+    },
+    emptyContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    placeholderIcon: {
+        marginBottom: 12,
+    },
+    emptyText: {
+        fontSize: 14,
+        color: '#666',
+        marginBottom: 24,
+        textAlign: 'center',
+    },
+    addNewButton: {
+        borderWidth: 1,
+        borderColor: style.colors.blue.bg,
+        borderRadius: 8,
+        paddingHorizontal: 24,
+        paddingVertical: 10,
+    },
+    addNewButtonText: {
+        color: style.colors.blue.bg,
+        fontWeight: '500',
+    },
+    confirmButton: {
+        backgroundColor: style.colors.blue.bg,
+        borderRadius: 8,
+        padding: 12,
+        alignItems: 'center',
+        marginTop: 'auto',
+        marginBottom: 16,
+    },
+    confirmButtonText: {
+        color: 'white',
+        fontWeight: '600',
+        fontSize: 16,
+    },
+});
