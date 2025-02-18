@@ -10,6 +10,7 @@ import ListVaccinatorProfile from '@screens/ServiceProfile';
 import VaccinationInfo from '@screens/VaccinationInfo';
 import ChooseAuthenScreen from '@screens/Auth/ChooseAuthen';;
 import SignInScreen from '@screens/Auth/SignIn';
+import PasswordScreen from '@screens/Auth/Password';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,11 @@ const StackNavigation = () => {
             <Stack.Screen
                 name={ROUTES.SIGNIN}
                 component={SignInScreen}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name={ROUTES.PASSWORD}
+                component={PasswordScreen}
                 options={{ headerShown: false }}
             />
             <Stack.Screen

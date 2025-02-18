@@ -1,18 +1,21 @@
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Image, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
-import { AuthStyles } from '@styles/auth'
 import { fontStyles } from '@styles/fonts'
 import { Controller, useForm } from 'react-hook-form'
 import { blockStyles } from '@styles/block'
 import { flexBoxStyles } from '@styles/flexBox'
 import ButtonAction from '../components/ButtonAction'
 import { style } from '@themes/index'
-import { LinearGradient } from 'expo-linear-gradient'
-
-
+import CustomLinearGradient from '@atoms/LinearGradient'
+import { NavigationProp, useNavigation } from '@react-navigation/core'
+import { RootStackParamList } from 'src/types/INavigates'
+import { ROUTES } from '@routes/index'
 
 const SignInScreen = () => {
 
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>()
+
+  //#region React Hook Form
   const {
     control,
     handleSubmit,
@@ -26,7 +29,10 @@ const SignInScreen = () => {
   })
 
   const emailValue = watch('email')
-  const onSubmit = (data: any) => console.log(data)
+  const onSubmit = (data: any) => {
+    navigation.navigate(ROUTES.PASSWORD, { email: data.email })
+  }
+  //#endregion
 
   // #region Toggle password visibility
   const [showPassword, setShowPassword] = useState(false)
@@ -36,12 +42,7 @@ const SignInScreen = () => {
   // #endregion
 
   return (
-    <LinearGradient
-      style={[AuthStyles.main]}
-      colors={['#1b60de', '#497ee0']}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 2 }}
-    >
+    <CustomLinearGradient>
       <View style={styles.title}>
         <Image source={{ uri: 'https://cdn.prod.website-files.com/6642dc4d079fead3f94f5a55/664d91a1c6be636fff0a2f5d_intl-remittance-4.png' }}
           style={{ width: 100, height: 100 }}
@@ -90,7 +91,7 @@ const SignInScreen = () => {
         <View style={styles.spacing}>
         </View>
       </View>
-    </LinearGradient >
+    </CustomLinearGradient >
   )
 }
 
