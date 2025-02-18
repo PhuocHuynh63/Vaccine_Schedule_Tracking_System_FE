@@ -183,6 +183,7 @@ const VaccinationInfoBox = () => {
                                 Add new vaccine
                             </Text>
                         </Button>
+
                     </View>
 
                     <View style={[flexBoxStyles.centerColumn]}>

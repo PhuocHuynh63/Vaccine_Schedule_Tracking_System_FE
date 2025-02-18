@@ -6,7 +6,7 @@ import { Search } from '@atoms/Search'
 import CardProfile from '@molecules/CardProfile'
 import { ScrollView } from 'react-native-gesture-handler'
 import { StyleSheet, View, Text } from 'react-native'
-import { Button } from '@atoms/Button'
+import { ButtonOpacity } from '@atoms/ButtonOpacity'
 import { style } from '@themes/index'
 import { fontStyles } from '@styles/fonts'
 
@@ -32,9 +32,9 @@ const ListVaccinatorProfile = () => {
             </ScrollView>
 
             <View style={styles.buttonContainer}>
-                <Button>
+                <ButtonOpacity>
                     <Text style={[fontStyles.fontButton]}>Add service profile</Text>
-                </Button>
+                </ButtonOpacity>
             </View>
         </View>
     )

@@ -1,14 +1,13 @@
 import { StyleSheet } from 'react-native'
 import React from 'react'
 import { style } from '@themes/index'
-import { Button } from '@atoms/Button'
+import { ButtonOpacity } from '@atoms/ButtonOpacity'
 
 const ButtonAction = ({ children, style }: { children: React.ReactNode, style?: object }) => {
     return (
-        <Button style={[styles.container, style]}>
+        <ButtonOpacity style={[styles.container, style]}>
             {children}
-        </Button>
-
+        </ButtonOpacity>
     )
 }
 

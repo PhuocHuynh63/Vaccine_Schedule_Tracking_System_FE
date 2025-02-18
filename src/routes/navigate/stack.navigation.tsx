@@ -9,12 +9,24 @@ import VaccinatorProfile from '@screens/VaccinatorProfile';
 import ListVaccinatorProfile from '@screens/ServiceProfile';
 import VaccinationInfo from '@screens/VaccinationInfo';
 import AddNewVaccine from '@screens/AddNewVaccine';
+import ChooseAuthenScreen from '@screens/Auth/ChooseAuthen';
+import RegisterScreen from '@screens/Auth/Register';
 
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
     return (
         <Stack.Navigator>
+            <Stack.Screen
+                name={ROUTES.CHOOSE_AUTHEN}
+                component={ChooseAuthenScreen}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name={ROUTES.REGISTER}
+                component={RegisterScreen}
+                options={{ headerShown: false }}
+            />
             <Stack.Screen
                 name={ROUTES.LIST_VACCINATOR_PROFILE}
                 component={ListVaccinatorProfile}
@@ -59,7 +71,6 @@ const StackNavigation = () => {
                         />
                 }}
             />
-
         </Stack.Navigator>
     )
 }
