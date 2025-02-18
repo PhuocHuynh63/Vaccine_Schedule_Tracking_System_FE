@@ -11,5 +11,9 @@ export const fontStyles = StyleSheet.create({
         color: style.colors.blue.bg,
         fontWeight: "600",
         fontSize: style.fonts.size.large,
-    }
+    },
+    textError: {
+        color: style.colors.red.bg,
+        fontSize: style.fonts.size.small,
+    },
 });

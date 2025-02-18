@@ -4,9 +4,14 @@ export const colors = {
     },
     blue: {
         bg: '#0A56DF',
+        bg_opacity: 'rgba(10, 85, 223, 0.81)',
+    },
+    black: {
+        bg: '#000'
     },
     white: {
         bg: '#FFFFFF',
+        text: '#FFFFFF',
     },
     grey: {
         bg: '#616161',

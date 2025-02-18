@@ -25,6 +25,6 @@ const styles = StyleSheet.create({
         borderRadius: style.sizes.borderRadius.br_3,
     },
     disabled: {
-        backgroundColor: "#ccc",
+        backgroundColor: "#d65959",
     },
 });
