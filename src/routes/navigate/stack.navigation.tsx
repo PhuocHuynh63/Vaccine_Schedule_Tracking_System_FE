@@ -13,6 +13,7 @@ import SignInScreen from '@screens/Auth/SignIn';
 import PasswordScreen from '@screens/Auth/Password';
 import AddNewVaccine from '@screens/AddNewVaccine';
 import ForgotPasswordScreen from '@screens/Auth/ForgotPassword';
+import OTPScreen from '@screens/Auth/OTP';
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,16 @@ const StackNavigation = () => {
             <Stack.Screen
                 name={ROUTES.FORGOTPASSWORD}
                 component={ForgotPasswordScreen}
+                options={{
+                    header: () =>
+                        <HeaderBooking
+                            children='Forgot Password'
+                        />
+                }}
+            />
+            <Stack.Screen
+                name={ROUTES.OTP}
+                component={OTPScreen}
                 options={{
                     header: () =>
                         <HeaderBooking

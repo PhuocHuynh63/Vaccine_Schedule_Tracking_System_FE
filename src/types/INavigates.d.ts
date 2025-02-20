@@ -6,6 +6,7 @@ type RootStackParamList = {
     [ROUTES.SIGNIN]: undefined;
     [ROUTES.PASSWORD]: { email: string };
     [ROUTES.FORGOTPASSWORD]: undefined;
+    [ROUTES.OTP]: { email: string };
     [ROUTES.LIST_VACCINATOR_PROFILE]: undefined;
     [ROUTES.ADD_NEW_VACCINE]: { userId: string };
     [ROUTES.VACCINATOR_PROFILE]: { userId: string };

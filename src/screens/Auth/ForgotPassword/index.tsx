@@ -8,8 +8,13 @@ import { style } from '@themes/index'
 import ButtonAction from '../components/ButtonAction'
 import { AuthStyles } from '@styles/auth'
 import { fontStyles } from '@styles/fonts'
+import { NavigationProp, useNavigation } from '@react-navigation/native'
+import { RootStackParamList } from 'src/types/INavigates'
+import { ROUTES } from '@routes/index'
 
 const ForgotPasswordScreen = () => {
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>()
+
     //#region React Hook Form
     const {
         control,
@@ -26,7 +31,8 @@ const ForgotPasswordScreen = () => {
 
     const emailValue = watch('email')
     const onSubmit = (data: any) => {
-
+        navigation.navigate(ROUTES.OTP, { email: data.email })
+        console.log(data);
         reset()
     }
     //#endregion
