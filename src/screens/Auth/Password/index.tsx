@@ -74,7 +74,7 @@ const PasswordScreen = () => {
                                         onChangeText={onChange}
                                         value={value}
                                     />
-                                    <FontAwesome5 name={`${showPassword ? 'eye-slash' : 'eye'}`} size={17} color="black" onPress={handleShowPassword} />
+                                    <FontAwesome5 name={`${showPassword ? 'eye' : 'eye-slash'}`} size={17} color="black" onPress={handleShowPassword} />
                                 </View>
                             </View>
                         )}
@@ -95,7 +95,7 @@ const PasswordScreen = () => {
                             <Text style={[fontStyles.oppositeFont, { fontSize: 14 }]} onPress={() => navigation.goBack()}>Change email</Text>
                         </View>
                         {/* TODO: Forgot password */}
-                        <Text style={[fontStyles.oppositeFont, { fontSize: 14 }]}>Forgot password?</Text>
+                        <Text style={[fontStyles.oppositeFont, { fontSize: 14 }]} onPress={() => navigation.navigate(ROUTES.FORGOTPASSWORD)}>Forgot password?</Text>
                     </View>
                 </View>
 

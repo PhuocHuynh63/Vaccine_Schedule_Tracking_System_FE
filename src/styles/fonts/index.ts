@@ -16,4 +16,8 @@ export const fontStyles = StyleSheet.create({
         color: style.colors.red.bg,
         fontSize: style.fonts.size.small,
     },
+    titleHeading: {
+        fontWeight: "700",
+        fontSize: style.fonts.size.extraLarge,
+    }
 });
