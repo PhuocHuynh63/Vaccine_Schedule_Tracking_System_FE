@@ -12,6 +12,8 @@ import ChooseAuthenScreen from '@screens/Auth/ChooseAuthen';;
 import SignInScreen from '@screens/Auth/SignIn';
 import PasswordScreen from '@screens/Auth/Password';
 import AddNewVaccine from '@screens/AddNewVaccine';
+import ForgotPasswordScreen from '@screens/Auth/ForgotPassword';
+import OTPScreen from '@screens/Auth/OTP';
 import SelectFromCart from '@screens/SelectFromCart'
 
 const Stack = createStackNavigator();
@@ -46,6 +48,37 @@ const StackNavigation = () => {
                 options={{ headerShown: false }}
             />
             
+            <Stack.Screen
+                name={ROUTES.FORGOTPASSWORD}
+                component={ForgotPasswordScreen}
+                options={{
+                    header: () =>
+                        <HeaderBooking
+                            children='Forgot Password'
+                        />
+                }}
+            />
+            <Stack.Screen
+                name={ROUTES.OTP}
+                component={OTPScreen}
+                options={{
+                    header: () =>
+                        <HeaderBooking
+                            children='Forgot Password'
+                        />
+                }}
+            />
+            <Stack.Screen
+                name={ROUTES.LIST_VACCINATOR_PROFILE}
+                component={ListVaccinatorProfile}
+                options={{
+                    header: () =>
+                        <HeaderBooking
+                            children={'Booking'}
+                            icon={<AntDesign name="edit" style={iconStyles.icon} />}
+                        />
+                }}
+            />
             <Stack.Screen
                 name={ROUTES.VACCINATOR_PROFILE}
                 component={VaccinatorProfile}

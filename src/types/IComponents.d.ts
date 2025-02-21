@@ -1,4 +1,4 @@
-import { TouchableOpacityProps, ViewProps } from "react-native";
+import { TextInputProps, TouchableOpacityProps, ViewProps } from "react-native";
 
 declare namespace IComponents {
     export interface IHEADERBOOKING extends ViewProps {
@@ -34,4 +34,13 @@ declare namespace IComponents {
         children: React.ReactNode;
         colors?: [string, string, ...string[]];
     }
+
+    export interface IOTPINPUT extends TextInputProps {
+        length: number;
+        onChangeTextInput: (otp: string) => void;
+        name: string;
+        control: any;
+        rules: any;
+    }
+
 }
