@@ -15,6 +15,7 @@ import AddNewVaccine from '@screens/AddNewVaccine';
 import ForgotPasswordScreen from '@screens/Auth/ForgotPassword';
 import OTPScreen from '@screens/Auth/OTP';
 import SelectFromCart from '@screens/SelectFromCart'
+import BottomTabNavigator from './bottomTab.navigation';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,11 @@ const StackNavigation = () => {
             <Stack.Screen
                 name={ROUTES.CHOOSE_AUTHEN}
                 component={ChooseAuthenScreen}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name={ROUTES.HOME_PAGE}
+                component={BottomTabNavigator}
                 options={{ headerShown: false }}
             />
             <Stack.Screen
