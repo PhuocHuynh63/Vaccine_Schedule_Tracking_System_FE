@@ -16,7 +16,6 @@ import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navig
 import { RootStackParamList } from 'src/types/INavigates';
 import { ROUTES } from '@routes/index';
 import { Button } from '@atoms/Button';
-import BottomSheet from '@gorhom/bottom-sheet';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const VaccinationInfoBox = () => {
@@ -25,9 +24,6 @@ const VaccinationInfoBox = () => {
     const { userId: user } = route.params;
     const insets = useSafeAreaInsets();
 
-    // State for bottom sheet
-    const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false);
-    
     /**
      * close or open detail user info
      */
@@ -44,36 +40,6 @@ const VaccinationInfoBox = () => {
 
     const toggleDetail = () => {
         setShowDetail(prevState => !prevState);
-    };
-
-    // Ref to control Bottom Sheet
-    const bottomSheetRef = useRef<BottomSheet>(null);
-
-    // Bottom Sheet height points
-    const snapPoints = useMemo(() => ['50%'], []);
-
-    // Open Bottom Sheet
-    const openSheet = useCallback(() => {
-        console.log('Opening Bottom Sheet...');
-        setIsBottomSheetVisible(true);
-        bottomSheetRef.current?.expand();
-    }, []);
-
-    // Close Bottom Sheet
-    const closeSheet = useCallback(() => {
-        console.log('Closing Bottom Sheet...');
-        bottomSheetRef.current?.close();
-        setTimeout(() => {
-            setIsBottomSheetVisible(false);
-        }, 300);
-    }, []);
-
-    // Handle navigation from bottom sheet
-    const handleAddNewVaccine = () => {
-        closeSheet();
-        setTimeout(() => {
-            navigation.navigate(ROUTES.ADD_NEW_VACCINE, { userId: user });
-        }, 300);
     };
 
     return (
@@ -170,7 +136,9 @@ const VaccinationInfoBox = () => {
                     </View>
 
                     <View style={styles.actionButton}>
-                        <Button style={styles.buttonaction} onPress={openSheet}>
+                        <Button
+                            onPress={() => navigation.navigate(ROUTES.SELECT_FROM_CART, { userId: user })}
+                            style={styles.buttonaction}>
                             <FontAwesome5 name="shopping-cart" size={18} color="white" style={{ marginRight: 7 }} />
                             <Text style={[fontStyles.fontButton]}>Add from cart</Text>
                         </Button>
@@ -191,48 +159,6 @@ const VaccinationInfoBox = () => {
                     </View>
                 </View>
             </View>
-            
-            {/* Bottom Sheet - Only render when visible */}
-            {isBottomSheetVisible && (
-                <BottomSheet 
-                    ref={bottomSheetRef} 
-                    index={0}
-                    snapPoints={snapPoints} 
-                    enablePanDownToClose
-                    onClose={() => setIsBottomSheetVisible(false)}
-                    handleComponent={() => (
-                        <View style={styles.handleComponent}>
-                            <View style={styles.handle} />
-                        </View>
-                    )}
-                >
-                    <View style={[styles.sheetContent, {paddingBottom: insets.bottom}]}>
-                        <View style={styles.sheetHeader}>
-                            <Text style={styles.sheetTitle}>Select from cart</Text>
-                            <TouchableOpacity onPress={closeSheet}>
-                                <Text style={styles.closeText}>Close</Text>
-                            </TouchableOpacity>
-                        </View>
-                        
-                        <Text style={styles.sectionTitle}>Selected vaccines</Text>
-                        
-                        <View style={styles.emptyContainer}>
-                            <View style={styles.placeholderIcon}>
-                                <FontAwesome5 name="list-alt" size={50} color="rgba(106,107,187,0.2)" />
-                            </View>
-                            <Text style={styles.emptyText}>You have not selected any Vaccines yet.</Text>
-                            
-                            <TouchableOpacity style={styles.addNewButton} onPress={handleAddNewVaccine}>
-                                <Text style={styles.addNewButtonText}>Add new vaccine</Text>
-                            </TouchableOpacity>
-                        </View>
-                        
-                        <TouchableOpacity style={styles.confirmButton} onPress={closeSheet}>
-                            <Text style={styles.confirmButtonText}>Confirm</Text>
-                        </TouchableOpacity>
-                    </View>
-                </BottomSheet>
-            )}
         </View>
     )
 }

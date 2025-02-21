@@ -14,12 +14,24 @@ import PasswordScreen from '@screens/Auth/Password';
 import AddNewVaccine from '@screens/AddNewVaccine';
 import ForgotPasswordScreen from '@screens/Auth/ForgotPassword';
 import OTPScreen from '@screens/Auth/OTP';
+import SelectFromCart from '@screens/SelectFromCart'
 
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
     return (
         <Stack.Navigator>
+            <Stack.Screen
+                name={ROUTES.LIST_VACCINATOR_PROFILE}
+                component={ListVaccinatorProfile}
+                options={{
+                    header: () =>
+                        <HeaderBooking
+                            children={'Booking'}
+                            icon={<AntDesign name="plus" style={iconStyles.icon} />}
+                        />
+                }}
+            />
             <Stack.Screen
                 name={ROUTES.CHOOSE_AUTHEN}
                 component={ChooseAuthenScreen}
@@ -35,6 +47,7 @@ const StackNavigation = () => {
                 component={PasswordScreen}
                 options={{ headerShown: false }}
             />
+            
             <Stack.Screen
                 name={ROUTES.FORGOTPASSWORD}
                 component={ForgotPasswordScreen}
@@ -62,7 +75,7 @@ const StackNavigation = () => {
                     header: () =>
                         <HeaderBooking
                             children={'Booking'}
-                            icon={<AntDesign name="plus" style={iconStyles.icon} />}
+                            icon={<AntDesign name="edit" style={iconStyles.icon} />}
                         />
                 }}
             />
@@ -84,6 +97,17 @@ const StackNavigation = () => {
                     header: () =>
                         <HeaderBooking
                             children={'Information about the person being vaccinated'}
+                            icon={<AntDesign name="edit" style={iconStyles.icon} />}
+                        />
+                }}
+            />
+            <Stack.Screen
+                name={ROUTES.SELECT_FROM_CART}
+                component={SelectFromCart}
+                options={{
+                    header: () =>
+                        <HeaderBooking
+                            children={'Select from cart'}
                             icon={<AntDesign name="edit" style={iconStyles.icon} />}
                         />
                 }}
