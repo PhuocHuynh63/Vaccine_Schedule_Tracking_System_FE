@@ -1,6 +1,7 @@
 export enum ROUTES {
     CHOOSE_AUTHEN = '/',
     SIGNIN = '/SignIn',
+    SIGNUP = '/SignUp',
     PASSWORD = '/Password',
     FORGOTPASSWORD = '/ForgotPassword',
     OTP = '/OTP',

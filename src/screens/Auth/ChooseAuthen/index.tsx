@@ -76,6 +76,7 @@ const ChooseAuthenScreen = () => {
                 </Text>
                 <View style={styles.actionLogin}>
                     <ButtonAction onPress={() => navigation.navigate(ROUTES.SIGNIN)}>Sign In</ButtonAction>
+                    <ButtonAction onPress={() => navigation.navigate(ROUTES.SIGNUP)}>Sign Up</ButtonAction>
                 </View>
             </Animated.View>
         </LinearGradient>

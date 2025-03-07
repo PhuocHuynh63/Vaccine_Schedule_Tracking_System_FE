@@ -4,6 +4,7 @@ import { ROUTES } from '@routes/index';
 type RootStackParamList = {
     [ROUTES.CHOOSE_AUTHEN]: undefined;
     [ROUTES.SIGNIN]: undefined;
+    [ROUTES.SIGNUP]: undefined;
     [ROUTES.PASSWORD]: { email: string };
     [ROUTES.FORGOTPASSWORD]: undefined;
     [ROUTES.OTP]: { email: string };
