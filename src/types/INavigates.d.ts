@@ -4,8 +4,8 @@ import { ROUTES } from '@routes/index';
 type RootStackParamList = {
     [ROUTES.CHOOSE_AUTHEN]: undefined;
     [ROUTES.SIGNIN]: undefined;
-    [ROUTES.SIGNUP]: undefined;
     [ROUTES.PASSWORD]: { email: string };
+    [ROUTES.REGISTER_ACCOUNT]: { email: string };
     [ROUTES.FORGOTPASSWORD]: undefined;
     [ROUTES.OTP]: { email: string };
     [ROUTES.LIST_VACCINATOR_PROFILE]: undefined;

@@ -10,6 +10,7 @@ import CustomLinearGradient from '@atoms/LinearGradient'
 import { NavigationProp, useNavigation } from '@react-navigation/core'
 import { RootStackParamList } from 'src/types/INavigates'
 import { ROUTES } from '@routes/index'
+import UserService from '@services/user'
 
 const SignInScreen = () => {
 
@@ -30,8 +31,12 @@ const SignInScreen = () => {
   })
 
   const emailValue = watch('email')
-  const onSubmit = (data: any) => {
-    navigation.navigate(ROUTES.PASSWORD, { email: data.email })
+  const onSubmit = async (data: any) => {
+    const isEmailExist = await UserService.isEmailExists(data.email)
+    if (isEmailExist) {
+      navigation.navigate(ROUTES.PASSWORD, { email: data.email })
+    }
+    navigation.navigate(ROUTES.REGISTER_ACCOUNT, { email: data.email })
     reset()
   }
   //#endregion
