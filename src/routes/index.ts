@@ -2,6 +2,7 @@ export enum ROUTES {
     CHOOSE_AUTHEN = '/',
     SIGNIN = '/SignIn',
     PASSWORD = '/Password',
+    REGISTER_ACCOUNT = '/RegisterAccount',
     FORGOTPASSWORD = '/ForgotPassword',
     OTP = '/OTP',
     LIST_VACCINATOR_PROFILE = '/ListVaccinatorProfile',
