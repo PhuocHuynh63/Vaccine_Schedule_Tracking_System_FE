@@ -43,8 +43,6 @@ const PasswordScreen = () => {
     const passwordValue = watch('password')
     const onSubmit = async (data: any) => {
         const res = await UserService.login(data)
-        console.log(res.data.data.access_token);
-
 
         if (res.data.statusCode === 201) {
             const token = res.data.data.access_token
