@@ -1,5 +1,5 @@
 import { Image, StyleSheet, Text, TextInput, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CustomLinearGradient from '@atoms/LinearGradient'
 import { Controller, useForm } from 'react-hook-form'
 import { blockStyles } from '@styles/block'
@@ -12,6 +12,7 @@ import { RootStackParamList } from 'src/types/INavigates'
 import { ROUTES } from '@routes/index'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import Entypo from '@expo/vector-icons/Entypo';
+import UserService from '@services/user'
 
 const PasswordScreen = () => {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>()
@@ -26,14 +27,25 @@ const PasswordScreen = () => {
         reset,
     } = useForm({
         defaultValues: {
+            email: "",
             password: "",
         },
         mode: "onChange",
     })
 
+    useEffect(() => {
+        if (route.params?.email) {
+            reset({ email: route.params.email, password: "" })
+        }
+    }, [route.params?.email, reset])
+
     const passwordValue = watch('password')
-    const onSubmit = (data: any) => {
+    const onSubmit = async (data: any) => {
         console.log(data);
+        const res = await UserService.login(data)
+        if (res.statusCode === 201) {
+            navigation.navigate(ROUTES.HOME_PAGE)
+        }
         reset();
     }
     //#endregion
@@ -57,6 +69,12 @@ const PasswordScreen = () => {
             {/* Form */}
             <View style={styles.form}>
                 <View style={styles.containerForm}>
+                    <Controller
+                        control={control}
+                        name='email'
+                        render={({ field }) => <TextInput {...field} style={{ display: 'none' }} />}
+                    />
+
                     <Controller
                         control={control}
                         rules={{
