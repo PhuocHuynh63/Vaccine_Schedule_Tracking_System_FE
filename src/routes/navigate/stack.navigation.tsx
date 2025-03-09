@@ -16,6 +16,7 @@ import ForgotPasswordScreen from '@screens/Auth/ForgotPassword';
 import OTPScreen from '@screens/Auth/OTP';
 import SelectFromCart from '@screens/SelectFromCart'
 import BottomTabNavigator from './bottomTab.navigation';
+import RegisterAccount from '@screens/Auth/RegisterAccount';
 
 const Stack = createStackNavigator();
 
@@ -38,11 +39,16 @@ const StackNavigation = () => {
                 options={{ headerShown: false }}
             />
             <Stack.Screen
+                name={ROUTES.REGISTER_ACCOUNT}
+                component={RegisterAccount}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
                 name={ROUTES.PASSWORD}
                 component={PasswordScreen}
                 options={{ headerShown: false }}
             />
-            
+
             <Stack.Screen
                 name={ROUTES.FORGOTPASSWORD}
                 component={ForgotPasswordScreen}

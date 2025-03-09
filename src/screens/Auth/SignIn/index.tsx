@@ -33,7 +33,9 @@ const SignInScreen = () => {
   const emailValue = watch('email')
   const onSubmit = async (data: any) => {
     const isEmailExist = await UserService.isEmailExists(data.email)
-    if (isEmailExist) {
+    console.log(isEmailExist.data.data);
+
+    if (isEmailExist.data.data) {
       navigation.navigate(ROUTES.PASSWORD, { email: data.email })
     } else {
       navigation.navigate(ROUTES.REGISTER_ACCOUNT, { email: data.email })

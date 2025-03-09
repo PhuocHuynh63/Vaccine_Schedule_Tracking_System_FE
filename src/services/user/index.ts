@@ -6,6 +6,9 @@ const UserService = {
     },
     async login(data: MODELS.IUser) {
         return axiosClient.post(`/auth/login`, data);
+    },
+    async register(data: GLOBAL.IRegisterAccount) {
+        return axiosClient.post(`/auth/register`, data);
     }
 }
 

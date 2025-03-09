@@ -1,7 +1,7 @@
 "use client"
 
-import { Image, StyleSheet, Text, TextInput, View } from "react-native"
-import { useState } from "react"
+import { Alert, Image, StyleSheet, Text, TextInput, View } from "react-native"
+import { useEffect, useState } from "react"
 import CustomLinearGradient from "@atoms/LinearGradient"
 import { Controller, useForm } from "react-hook-form"
 import { blockStyles } from "@styles/block"
@@ -11,9 +11,10 @@ import ButtonAction from "../components/ButtonAction"
 import { style } from "@themes/index"
 import { type NavigationProp, type RouteProp, useNavigation, useRoute } from "@react-navigation/native"
 import type { RootStackParamList } from "src/types/INavigates"
-import type { ROUTES } from "@routes/index"
+import { ROUTES } from "@routes/index"
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5"
 import Entypo from "@expo/vector-icons/Entypo"
+import UserService from "@services/user"
 
 const RegisterAccount = () => {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>()
@@ -28,21 +29,31 @@ const RegisterAccount = () => {
         reset,
     } = useForm({
         defaultValues: {
+            fullname: "",
+            email: route.params.email,
             password: "",
             confirmPassword: "",
         },
         mode: "onChange",
     })
 
+    useEffect(() => {
+        reset({ email: route.params.email, password: "", confirmPassword: "" })
+    }, [route.params.email])
+
     const password = watch("password")
     const confirmPassword = watch("confirmPassword")
 
-    const onSubmit = (data: any) => {
+    const onSubmit = async (data: any) => {
         console.log(data)
-        // TODO: Register user with email and password
-        // You can add your registration logic here
+        const res = await UserService.register(data)
+        console.log(res)
+        if (res.data.statusCode === 201) {
+            navigation.navigate(ROUTES.HOME_PAGE)
+        } else {
+            Alert.alert(res.data.message)
+        }
         reset()
-        // Navigate to success screen or home screen after registration
     }
     //#endregion
 
@@ -69,6 +80,28 @@ const RegisterAccount = () => {
             {/* Form */}
             <View style={styles.form}>
                 <View style={styles.containerForm}>
+                    <Controller
+                        control={control}
+                        name="email"
+                        render={({ field }) => <TextInput {...field} style={{ display: 'none' }} />}
+                    />
+                    <Controller
+                        control={control}
+                        name="fullname"
+                        rules={{ required: "Full name is required" }}
+                        render={({ field: { onChange, onBlur, value } }) => (
+                            <View>
+                                <Text style={blockStyles.label}>Fullname</Text>
+                                <TextInput
+                                    onBlur={onBlur}
+                                    onChangeText={onChange}
+                                    value={value}
+                                    placeholder="Full Name"
+                                    style={blockStyles.input}
+                                />
+                            </View>
+                        )}
+                    />
                     <Controller
                         control={control}
                         rules={{
@@ -98,7 +131,7 @@ const RegisterAccount = () => {
                                     />
                                 </View>
                                 {errors.password && (
-                                    <Text style={{ color: "red", fontSize: 12, marginTop: 5 }}>{errors.password.message}</Text>
+                                    <Text style={{ color: "red", fontSize: 12, marginHorizontal: 28, marginTop: 5 }}>{errors.password.message}</Text>
                                 )}
                             </View>
                         )}
@@ -131,7 +164,7 @@ const RegisterAccount = () => {
                                     />
                                 </View>
                                 {errors.confirmPassword && (
-                                    <Text style={{ color: "red", fontSize: 12, marginTop: 5 }}>{errors.confirmPassword.message}</Text>
+                                    <Text style={{ color: "red", fontSize: 12, marginHorizontal: 28, marginTop: 5 }}>{errors.confirmPassword.message}</Text>
                                 )}
                             </View>
                         )}
